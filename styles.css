@@ -1,0 +1,526 @@
+/* ==============================================
+   Global Styles and Theming
+   ============================================== */
+
+   :root {
+    --primary-color: #6d9eeb;       /* Soft pastel blue */
+    --secondary-color: #3c78d8;     /* Deeper blue for accents */
+    --background-color: #f6f9fc;    /* Default light pastel background */
+    --card-background: #ffffff;     /* Neutral card background */
+    --text-color: #333;             /* Dark text for good contrast */
+    --light-text-color: #555;       /* Softer secondary text */
+    --accent-color: #f9cb9c;        /* Soft pastel orange accent */
+    --success-color: #b6d7a8;       /* Pastel green for success messages */
+    --error-color: #e06666;         /* Pastel red for error messages */
+    --font-family: 'Poppins', sans-serif; /* Modern, clean font */
+    --border-radius: 12px;          /* Increased rounded corners */
+    --transition-duration: 0.3s;
+    --max-width: 1200px;
+  }
+  
+  /* Define unique pastel backgrounds for each page (except Home & About)
+     We'll keep the original ones for the other pages, but override Home & About below. */
+  body.services {
+    background-color: #f7e4b8; /* Darker pastel yellow */
+  }
+  
+  /* Gallery Page Background */
+body.gallery {
+  background-color: #C3B1E1; /* Lavender background for a calm aesthetic */
+  padding: 20px 0; /* Add some vertical spacing to the page */
+}
+
+/* Section Styling */
+#photo-gallery {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#photo-gallery h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5rem;
+  color: var(--primary-color); /* Matches primary theme color */
+  margin-bottom: 20px;
+}
+
+/* Pinterest-Style Grid */
+.pinterest-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Flexible grid for responsiveness */
+  gap: 20px; /* Spacing between images */
+  justify-items: center; /* Center-align images */
+}
+
+/* Individual Figure Styling */
+.pinterest-gallery figure {
+  overflow: hidden; /* Ensures images don’t overflow the container */
+  border-radius: 20px; /* Large rounded corners for a soft look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for a floating effect */
+  background: #fff; /* Clean white background for a modern look */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animation */
+}
+
+.pinterest-gallery figure:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.pinterest-gallery img {
+  width: 100%; /* Responsive width */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Prevent inline spacing issues */
+  border-radius: 20px; /* Matches figure’s rounded corners */
+}
+
+.pinterest-gallery figcaption {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--primary-color); /* Matches primary theme color */
+  text-align: center; /* Center-align captions */
+}
+
+/* Contact Page Background */
+body.contact {
+  background-color: #d2f2df; /* Darker pastel green */
+}
+
+  
+  /* ==============================================
+     Remove the original background for .home and .about
+     and replace them with custom backgrounds
+     ============================================== */
+  
+/* Home Page: Full background image */
+body.home {
+  background: url("images/IMG_5300.JPG") center center / cover no-repeat fixed;
+}
+
+/* Animated Gradient Text */
+body.home h2.animated-text {
+  font-size: 2.5rem; /* Adjust size as needed */
+  font-weight: bold;
+  text-align: center; /* Center the text */
+  background: linear-gradient(90deg, #00D1FF, #4A90E2, #FF5EBA, #D93A96, #ff6b6b, #32FF7E, #FFCC00, #5856D6); /* Gradient colors */
+  -webkit-background-clip: text; /* Clips the gradient to the text for WebKit browsers */
+  background-clip: text; /* Standard property for other browsers */
+  -webkit-text-fill-color: transparent; /* Makes text transparent to show gradient */
+  animation: moveGradient 6s infinite; /* Applies animation */
+  background-size: 300%; /* Ensures smooth gradient flow */
+  margin: 20px auto; /* Adds space around and centers the element */
+}
+
+/* Keyframes for Gradient Animation */
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+  
+  /* About Page: We'll display a video behind the content, so set to no background */
+body.about {
+  position: relative;
+  color: white; /* Sets default text color to white for the about page */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scrolling due to fixed video */
+}
+
+body.about #background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Places the video behind the content */
+}
+
+/* About Page Specific Text Styling */
+body.about p {
+  color: #a2ff00;
+  margin-bottom: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+body.about ul {
+  color: #a2ff00;
+  list-style: none;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+body.about li {
+  color: #a2ff00;
+  margin-bottom: 10px;
+  background: transparent;
+}
+
+body.about h2 {
+  color: #89CFF0;
+  margin-bottom: 20px;
+}
+
+body.about main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* General Navigation Styling */
+header nav ul {
+  list-style: none; /* Remove default list bullets */
+  display: flex; /* Display items in a row */
+  gap: 1rem; /* Add spacing between items */
+  justify-content: center; /* Center-align items horizontally */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+header nav ul li {
+  display: inline; /* Ensure list items are inline */
+}
+
+header nav ul li a {
+  padding: 0.5rem 1rem; /* Add padding around links */
+  font-weight: 500; /* Slightly bolder text */
+  text-decoration: none; /* Remove underline */
+  color: var(--text-color); /* Use your defined text color */
+  transition: color var(--transition-duration); /* Smooth hover effect */
+}
+
+header nav ul li a:hover {
+  color: var(--primary-color); /* Highlight text on hover */
+}
+
+/* Remove highlight styles for navigation links */
+header nav ul li a {
+  background: transparent; /* Ensure no background is applied */
+  border-radius: 0; /* Remove rounded corners */
+}
+
+
+
+
+  /* ==============================================
+     General Element Resets & Rounded Corners
+     ============================================== */
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  section,
+  header,
+  footer,
+  nav,
+  ul,
+  li,
+  button,
+  input,
+  textarea,
+  .form,
+  .article,
+  .modal,
+  .modal-content,
+  #services-overview article,
+  #photo-gallery img,
+  blockquote,
+  figure,
+  figcaption {
+    border-radius: var(--border-radius);
+  }
+  
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    /* If you want a fallback background for non-Home/ non-About pages or in case the image fails: */
+    background-color: var(--background-color);
+  }
+  
+  .container {
+    width: min(90%, var(--max-width));
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  button, 
+  input, 
+  textarea {
+    font-family: inherit;
+    border-radius: var(--border-radius);
+  }
+  
+  /* ==============================================
+     Typography
+     ============================================== */
+  h1, h2, h3, h4 {
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+    line-height: 1.3;
+  }
+  
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--primary-color);
+  }
+  
+  h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    text-align: center;
+    color: var(--primary-color);
+  }
+  
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+  
+  p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--light-text-color);
+    line-height: 1.8;
+  }
+  
+  a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition-duration);
+  }
+  
+  a:hover {
+    color: var(--secondary-color);
+  }
+  
+  /* ==============================================
+     Special NEON Heading on Home Page
+     ============================================== */
+  .home #hero h2 {
+    color: #000;
+    font-family: 'Pacifico', cursive; /* Aesthetic font */
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #ff00ff,
+      0 0 20px #00ffff,
+      0 0 30px #ffff00,
+      0 0 40px #ff00ff,
+      0 0 70px #00ffff,
+      0 0 80px #ffff00;
+    padding: 0.5rem 1rem;
+    border: 3px solid transparent;
+  }
+  
+  /* ==============================================
+     Header and Navigation
+     ============================================== */
+  header {
+    background: var(--card-background);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  header nav h1 {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  header nav ul li a {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-duration);
+  }
+  
+  header nav ul li a:hover {
+    background: var(--primary-color);
+    color: #fff;
+  }
+  
+  /* Mobile Navigation */
+  .nav-toggle {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    header nav ul {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--card-background);
+      position: absolute;
+      top: 4rem;
+      right: 0;
+      width: 100%;
+      border-top: 1px solid var(--light-text-color);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+  
+    header nav ul.active {
+      display: flex;
+    }
+  
+    .nav-toggle {
+      display: inline-block;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  
+    .nav-toggle .hamburger {
+      width: 1.5rem;
+      height: 2px;
+      background: var(--text-color);
+      position: relative;
+      border-radius: var(--border-radius);
+    }
+  
+    .nav-toggle .hamburger::before,
+    .nav-toggle .hamburger::after {
+      content: "";
+      position: absolute;
+      width: 1.5rem;
+      height: 2px;
+      background: var(--text-color);
+      border-radius: var(--border-radius);
+      transition: transform var(--transition-duration);
+    }
+  
+    .nav-toggle .hamburger::before {
+      top: -6px;
+    }
+  
+    .nav-toggle .hamburger::after {
+      top: 6px;
+    }
+  }
+  
+  /* ==============================================
+     Hero Section
+     ============================================== */
+  #hero {
+
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(251, 0, 0, 0.1);
+  }
+  
+  #hero p {
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin: 0.5rem auto;
+    color: #fff;
+  }
+  
+  /* ==============================================
+     Map Section
+     ============================================== */
+  .map-container {
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* ==============================================
+     Brochure Section
+     ============================================== */
+  .brochure-container {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  
+  .brochure-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background var(--transition-duration);
+  }
+  
+  .btn:hover {
+    background: var(--secondary-color);
+  }
+  
+  /* ==============================================
+     Footer
+     ============================================== */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--secondary-color);
+    color: #fff;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  /* ==============================================
+     Full-screen background video for About page
+     ============================================== */
+  #background-video {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Place behind other content */
+  }
+  
